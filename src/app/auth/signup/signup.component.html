@@ -1,0 +1,122 @@
+<section class="section">
+    <div class="box" id="signup-box">
+        <div class="card-content">
+            <form [formGroup]="signupForm" (ngSubmit)=onSubmit()>
+                <h4 class="title is-4 has-text-right has-text-white">Registrarse</h4>
+                <div class="field">
+                    <label class="label has-text-white" for="email">Email</label>
+                    <div class="control has-icons-left">
+                        <input
+                            id="email"                                                                                                     
+                            class="input"
+                            type="email"
+                            placeholder="Correo - electronico"
+                            formControlName="email"
+                            required>
+                        <span class="icon is-small is-left">
+                            <fa-icon icon="envelope"></fa-icon>
+                        </span>
+                    </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                        <p class="help is-danger is-size-6"
+                       *ngIf="email.errors.required"                                                                                                                                                               
+                       >Campo obligatorio</p>
+                        <p class="help is-danger is-size-6"
+                           *ngIf="email.errors.email"                                                                                                                                                              
+                           >Formato Incorrecto</p>  
+                    </div>
+                
+                </div>
+                
+
+                <div class="field">
+                    <label class="label has-text-white" for="name">Nombre</label>
+                    <div class="control has-icons-left">
+                        <input
+                            class="input"                                    
+                            type="text"
+                            placeholder="Nombre"
+                            formControlName="name"
+                            required>
+                        <span class="icon is-small is-left">
+                            <fa-icon icon="user"></fa-icon>
+                        </span>
+                    </div>
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)">
+                        <p class="help is-danger is-size-6"
+                       *ngIf="name.errors.required"                                                                                                                                                               
+                       >Campo obligatorio</p>
+                        <p class="help is-danger is-size-6"
+                           *ngIf="name.errors.minlength"                                                                                                                                                             
+                           >Formato Incorrecto minimo 8 caracteres</p>  
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label has-text-white" for="password">Clave</label>
+                    <div class="control has-icons-left">
+                        <input
+                            class="input"                                  
+                            type="password"
+                            placeholder="Contraseña"
+                            formControlName="password"
+                            required>
+                        <span class="icon is-small is-left">
+                            <fa-icon icon="lock"></fa-icon>
+                        </span>
+                    </div>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                        <p class="help is-danger is-size-6"
+                       *ngIf="password.errors.required"                                                                                                                                                               
+                       >Campo obligatorio</p>
+                        <p class="help is-danger is-size-6"
+                           *ngIf="password.errors.minlength"                                                                                                                                                              
+                           >Formato Incorrecto minimo 8 caracteres</p>  
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label has-text-white" for="password_confirmation">Repetir Clave</label>
+                    <div class="control has-icons-left">
+                        <input
+                            class="input"
+                            formControlName="password_confirmation"
+                            type="password"
+                            placeholder="Repeir Contraseña"
+                            formControlName="password_confirmation"
+                            required>
+                        <span class="icon is-small is-left">
+                            <fa-icon icon="lock"></fa-icon>
+                        </span>
+                    </div>
+                    <div *ngIf="password_confirmation.invalid && (password_confirmation.dirty || password_confirmation.touched)">
+                        <p class="help is-danger is-size-6"
+                       *ngIf="password_confirmation.errors.required"                                                                                                                                                               
+                       >Campo obligatorio</p>
+                       <p class="help is-danger is-size-6"
+                       *ngIf="password_confirmation.errors.matchOther"                                                                                                                                                              
+                       >Las constraseñas no son iguales</p>  
+                    </div>                    
+                </div>
+
+                <div class="field">
+                    <label class="label">&nbsp;</label>
+                    <div class="control">
+                        <button class="button is-primary is-fullwidth is-outlined is-size-6"
+                                [disabled]="!signupForm.valid || loading">
+                            <span>Crear cuenta</span>
+                            <span *ngIf="loading" class="icon is-small fa-pulse">
+                                <fa-icon icon="spinner"></fa-icon>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="successNot || errorNot" [ngClass]="{'is-success': successNot, 'is-danger': errorNot}" class="notification">
+                    <button (click)=removeNotification() class="delete"></button>
+                    {{messageNot}}                        
+                </div>
+            </form>
+
+        </div>
+    </div>
+</section>

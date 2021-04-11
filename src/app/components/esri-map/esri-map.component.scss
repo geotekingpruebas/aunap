@@ -1,0 +1,488 @@
+/* import the required JSAPI css */
+//@import url('https://js.arcgis.com/4.12/esri/css/main.css');
+@import url('https://js.arcgis.com/4.15/esri/themes/light/main.css');
+@import url( "https://cdn.jsdelivr.net/npm/jspanel4@4.10.1/dist/jspanel.css");
+.esri-view {
+  height: 700px;
+  width: 100%;
+}
+.ui-g div {
+  background-color: #ededed;
+  text-align: center;
+  border: 1px solid #fafafa;
+}
+.custom-file-input {
+  outline: none;
+  color: transparent;
+}
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: 'Cargar Archivo';
+  color: black;
+  display: inline-block;
+  background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+.custom-file-input:active {
+  outline: 0;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+}
+
+
+.esri-popup .esri-popup-header .esri-title {
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.esri-popup .esri-popup-body .esri-popup-content {
+  font-size: 14px;
+}
+
+:host ::ng-deep .TabLoadData .ui-tabview-panels {
+  background-color: #ffffff;
+  padding-left: 5px;
+  border: 1px solid #e0e0e0;
+  color: #212121;
+  width: 320px;
+}
+#uploadForm {
+  display: block;
+  padding: 0.1em;
+}
+
+:host ::ng-deep .PanelMenu{
+  top: 100px;
+  right: 250px;
+  width: 350px;
+
+}
+
+:host ::ng-deep .PanelMenu .ui-panel-titlebar {
+  height: 45px;
+  background: rgb(95, 135, 221);
+} 
+:host ::ng-deep .PanelGeoref{
+  top: 100px;
+  width: 350px;
+  //height: 100px;
+}
+:host ::ng-deep .PanelGeoref .ui-panel-titlebar {
+  height: 45px;
+  background: rgb(95, 135, 221);
+}
+:host ::ng-deep .PanelPrint{
+  top: 100px;
+  width: 350px;
+  //height: 100px;
+}
+:host ::ng-deep .PanelPrint .ui-panel-titlebar {
+  height: 45px;
+  background: rgb(95, 135, 221);
+}
+:host ::ng-deep .PanelLoadData{
+  width: 350px;
+  //height: 100px;
+}
+:host ::ng-deep .PanelLoadData .ui-panel-titlebar {
+  height: 45px;
+  background: rgb(95, 135, 221);
+}
+.container {
+  height: 200px;
+  width: 100%;
+}
+:host ::ng-deep .PanelTable{
+  //width: 800px;
+  position: relative;
+  bottom: 60px;
+  height: 210px;
+}
+:host ::ng-deep .PanelTable .ui-panel-titlebar {
+  height: 45px;
+  background: rgb(95, 135, 221);
+}
+:host ::ng-deep .PanelStat{
+  width: 450px;
+  position: relative;
+  height: 300px;
+}
+:host ::ng-deep .PanelStat .ui-panel-titlebar {
+  height: 45px;
+  background: rgb(95, 135, 221);
+}
+:host ::ng-deep .PanelStat .ui-panel-content{
+  height: 300px;
+  width: 450px;
+}
+:host ::ng-deep .PanelProces{
+  width: 450px;
+  position: absolute;
+  left: 380px;
+  top: 5px;
+
+}
+:host ::ng-deep .PanelProces .ui-panel-titlebar {
+  height: 45px;
+  background: rgb(95, 135, 221);
+}
+/*:host ::ng-deep .PanelProces .ui-panel-content{
+  height: 200px;
+  //width: 350px;
+}*/
+
+
+
+.btn1 {
+  outline: none;
+	width: 40px;
+  height: 40px;
+	box-shadow: 0 1px 0.5px rgba(0,0,0,0.3), 0 2px 2px rgba(0,0,0,0.2);
+  position: absolute;
+	border-radius: 50%;
+	text-align: center;
+  cursor: pointer;
+	right: 50px;
+  top: 15px;
+  background-color: rgb(33, 67, 112);
+    /*right: calc(50% + 200px);*/
+  z-index: 3;
+  background-image:url(./assets/images/Georef.png);
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  background-position: 50% 50%;
+  border-radius: 50%;
+}
+.btn1:hover{
+  outline: none;
+  background-color: rgba(59, 110, 185, 0.7);
+}
+.btn1:hover:after {
+  outline: none;
+  position: absolute;
+  background-color: rgb(84, 77, 192);
+  top: 40px;
+  left: 10px;
+  width: 75px;
+  height: 30px;
+  content: "Georeferenciar Datos...";
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  text-align: left;
+  padding-left: 3px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  line-height: 1.4em;
+  border: 0.5px solid #000;
+  box-shadow: 2px 2px 10px #999;
+}
+.btn2 {
+  outline: none;
+	width: 40px;
+  height: 40px;
+	box-shadow: 0 1px 0.5px rgba(0,0,0,0.3), 0 2px 2px rgba(0,0,0,0.2);
+  position: absolute;
+	border-radius: 50%;
+	text-align: center;
+  cursor: pointer;
+	right: 100px;
+  top: 15px;
+  background-color: rgb(33, 67, 112);
+    /*right: calc(50% + 200px);*/
+  z-index: 3;
+  background-image:url(./assets/images/AddData.png);
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  background-position: 50% 50%;
+  border-radius: 50%;
+}
+.btn2:hover{
+  outline: none;
+  background-color: rgba(59, 110, 185, 0.7);
+}
+.btn2:hover:after {
+  outline: none;
+  position: absolute;
+  background-color: rgb(84, 77, 192);
+  top: 40px;
+  left: 10px;
+  width: 71px;
+  height: 20px;
+  content: "Subir Datos...";
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  text-align: left;
+  padding-left: 3px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  line-height: 1.4em;
+  border: 0.5px solid #000;
+  box-shadow: 2px 2px 10px #999;
+}
+.btn3 {
+  outline: none;
+	width: 40px;
+  height: 40px;
+	box-shadow: 0 1px 0.5px rgba(0,0,0,0.3), 0 2px 2px rgba(0,0,0,0.2);
+  position: absolute;
+	border-radius: 50%;
+	text-align: center;
+  cursor: pointer;
+	right: 150px; /////////  Posicion del boton en la zona
+  top: 15px;
+  background-color: rgb(33, 67, 112);
+    /*right: calc(50% + 200px);*/
+  z-index: 3;
+  background-image:url(./assets/images/i_print.png);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 50% 50%;
+  border-radius: 50%;
+}
+.btn3:hover{
+  outline: none;
+  background-color: rgba(59, 110, 185, 0.7);
+}
+.btn3:hover:after {
+  outline: none;
+  position: absolute;
+  background-color: rgb(84, 77, 192);
+  top: 40px;
+  left: 10px;
+  width: 60px;
+  height: 20px;
+  content: "Imprimir...";
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  text-align: left;
+  padding-left: 3px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  line-height: 1.4em;
+  border: 0.5px solid #000;
+  box-shadow: 2px 2px 10px #999;
+}
+.btn4 {
+  outline: none;
+	width: 40px;
+  height: 40px;
+	box-shadow: 0 1px 0.5px rgba(0,0,0,0.3), 0 2px 2px rgba(0,0,0,0.2);
+  position: absolute;
+	border-radius: 50%;
+	text-align: center;
+  cursor: pointer;
+	right: 200px; /////////  Posicion del boton en la zona
+  top: 15px;
+  background-color: rgb(33, 67, 112);
+    /*right: calc(50% + 200px);*/
+  z-index: 3;
+  background-image:url(./assets/images/Process.png);
+  background-repeat: no-repeat;
+  background-size: 22px 22px;
+  background-position: 50% 50%;
+  border-radius: 50%;
+}
+.btn4:hover{
+  outline: none;
+  background-color: rgba(59, 110, 185, 0.7);
+}
+.btn4:hover:after {   
+  outline: none;
+  position: absolute;
+  background-color: rgb(84, 77, 192);
+  top: 40px;
+  left: 10px;
+  width: 75px;
+  height: 20px;
+  content: "GeoProcesos...";
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  text-align: left;
+  padding-left: 3px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  line-height: 1.4em;
+  border: 0.5px solid #000;
+  box-shadow: 2px 2px 10px #999;
+}
+.btn5 {
+  outline: none;
+	width: 40px;
+  height: 40px;
+	box-shadow: 0 1px 0.5px rgba(0,0,0,0.3), 0 2px 2px rgba(0,0,0,0.2);
+  position: absolute;
+	border-radius: 50%;
+	text-align: center;
+  cursor: pointer;
+	right: 250px; /////////  Posicion del boton en la zona
+  top: 15px;
+  background-color: rgb(33, 67, 112);
+    /*right: calc(50% + 200px);*/
+  z-index: 3;
+  background-image:url(./assets/images/i_layers.png);
+  background-repeat: no-repeat;
+  background-size: 25px 25px;
+  background-position: 50% 50%;
+  border-radius: 50%;
+}
+.btn5:hover{
+  outline: none;
+  background-color: rgba(59, 110, 185, 0.7);
+}
+.btn5:hover:after {
+  outline: none;
+  position: absolute;
+  background-color: rgb(84, 77, 192);
+  top: 40px;
+  left: 10px;
+  width: 50px;
+  height: 30px;
+  content: "Cargar Pomcas..";
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 10px;
+  text-align: left;
+  padding-left: 3px;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  line-height: 1.4em;
+  border: 0.5px solid #000;
+  box-shadow: 2px 2px 10px #999;
+}
+
+
+.claro .BtMenu .dijitButtonNode {
+  display: block;
+cursor: pointer;
+width: 33px;
+height: 33px;
+
+}
+////////////////  Stylos del LOADER INICIAL  ////////////
+.webLoad{
+  position: absolute;
+  width: 100%;
+  height: 100%;	
+  background-color: rgba(255,255,255,1);
+  background-image: url(./assets/images/aunap.png);
+  background-repeat: no-repeat;
+  background-size: 205px 120px;
+  background-position: 50% calc(50% + 110px);
+  z-index: 998;
+}
+
+.container {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  
+}
+
+.item {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}
+
+.item-1 {
+  background-color: rgb( 3, 62, 64);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  animation: item-1_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+.item-2 {
+  background-color: rgb(26, 149, 2);
+  top: 0;
+  right: 0;
+  animation: item-2_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+.item-3 {
+  background-color: rgb(28, 171, 243);
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  animation: item-3_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+.item-4 {
+  background-color: rgb(183, 189, 193);
+  bottom: 0;
+  left: 0;
+  animation: item-4_move 1.8s cubic-bezier(.6,.01,.4,1) infinite;
+}
+
+@keyframes item-1_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(0, 40px)} 
+  50% {transform: translate(40px, 40px)} 
+  75% {transform: translate(40px, 0)} 
+}
+
+@keyframes item-2_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(-40px, 0)} 
+  50% {transform: translate(-40px, 40px)} 
+  75% {transform: translate(0, 40px)} 
+}
+
+@keyframes item-3_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(0, -40px)} 
+  50% {transform: translate(-40px, -40px)} 
+  75% {transform: translate(-40px, 0)} 
+}
+
+@keyframes item-4_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(40px, 0)} 
+  50% {transform: translate(40px, -40px)} 
+  75% {transform: translate(0, -40px)} 
+}
+@-webkit-keyframes item-1_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(0, 40px)} 
+  50% {transform: translate(40px, 40px)} 
+  75% {transform: translate(40px, 0)} 
+}
+@-webkit-keyframes item-2_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(-40px, 0)} 
+  50% {transform: translate(-40px, 40px)} 
+  75% {transform: translate(0, 40px)} 
+}
+
+@-webkit-keyframes item-3_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(0, -40px)} 
+  50% {transform: translate(-40px, -40px)} 
+  75% {transform: translate(-40px, 0)} 
+}
+
+@-webkit-keyframes item-4_move {
+  0%, 100% {transform: translate(0, 0)} 
+  25% {transform: translate(40px, 0)} 
+  50% {transform: translate(40px, -40px)} 
+  75% {transform: translate(0, -40px)} 
+}

@@ -1,0 +1,36 @@
+<div class="content">
+    <div class="columns">
+      <div class="column">
+        <article class="panel is-primary">
+          <p class="panel-heading">
+            Permisos
+          </p>
+          <a class="panel-block" *ngFor="let el of curPers" >
+            <span class="panel-icon">
+              <i class="pi pi-bookmark" aria-hidden="true"></i>
+            </span>
+            {{el.id}}) {{el.name}}
+          </a>
+        </article>
+      </div>
+      <div class="column">
+        <table class="table is-striped is-bordered is-narrow is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th><abbr title="id">ID</abbr></th>
+              <th><abbr title="nombre">Nombre</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let el of curPers"> 
+                <td>{{el.id}}</td>
+                <td>{{el.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,28 @@
+<!-- Here's the DIV that we inject the map into 
+    <link href="../../../../node_modules/jspanel4/dist/jspanel.css" rel="stylesheet">
+-->
+<div>
+    <div #LoadInicial class="webLoad"> 
+        <div class="container">
+          <div class="item item-1"></div>
+          <div class="item item-2"></div>
+          <div class="item item-3"></div>
+          <div class="item item-4"></div>
+        </div>
+    </div>
+<h3 align="center">ARTEFACTO DEMOSTRATIVO SIG (SIPGACAR)</h3>
+<div class="ui-g">
+    
+    <div class="ui-g-12">
+        <div #mapViewNode id="viewDiv"></div>
+        <div id="ZoneButon">
+            <button (click)="toggleGeorefPanel()" class="btn1"></button>  
+            <button (click)="toggleLoadDataPanel()" class="btn2"></button> 
+            <button (click)="togglePrintPanel()" class="btn3"></button> 
+            <button (click)="toggleProcesPanel()" class="btn4"></button>  
+            <button (click)="AddRemovePomcas()" class="btn5"></button>  
+        </div>
+        
+    </div>
+</div>   
+</div>

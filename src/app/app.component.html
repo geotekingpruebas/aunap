@@ -1,0 +1,46 @@
+<div *ngIf="showHead; else loginTemplate" class="layout-wrapper" (click)="onLayoutClick()"
+     [ngClass]="{'layout-static': isStatic(),
+                'layout-overlay': isOverlay(),
+                'layout-overlay-active': overlayMenuActive,
+                'layout-horizontal': isHorizontal(),
+                'layout-slim': isSlim(),
+                'layout-static-inactive': staticMenuDesktopInactive,
+                'layout-mobile-active': staticMenuMobileActive,
+                'layout-menu-dark':darkMenu,
+                'layout-menu-light':!darkMenu}">
+
+    <app-topbar></app-topbar>
+
+    <div class="layout-menu-container" (click)="onMenuClick($event)">
+        <div class="layout-menu-logo">
+            <a href="#">
+                <img id="layout-menu-logo" src="assets/images/aunap.png" library="babylon-layout" />
+            </a>
+        </div>
+        <div class="layout-menu-wrapper">
+            <p-scrollPanel #layoutMenuScroller [style]="{height: '100%' }">
+                <div class="menu-scroll-content">
+                    <app-menu [reset]="resetMenu"></app-menu>
+                </div>
+            </p-scrollPanel>
+        </div>
+    </div>
+
+    <div class="layout-main">
+        <app-breadcrumb></app-breadcrumb>
+
+        <div class="layout-content">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+    <app-footer></app-footer>
+
+    <div class="layout-mask"></div>
+
+</div>
+
+<ng-template #loginTemplate>
+<router-outlet></router-outlet>
+</ng-template>

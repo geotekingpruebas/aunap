@@ -1,0 +1,33 @@
+<div class="layout-topbar">
+
+    <a href="#" class="layout-topbar-logo">
+        <img id="layout-topbar-logo" src="assets/layout/images/logo-white.png" alt="babylon-layout"/>
+    </a>
+
+    <a class="layout-menu-button" href="#" (click)="app.onMenuButtonClick($event)">
+        <i class="pi pi-bars"></i>
+    </a>
+
+    <a id="topbar-menu-button" href="#" (click)="app.onTopbarMenuButtonClick($event)">
+        <i class="pi pi-ellipsis-v"></i>
+    </a>
+
+    <ul class="topbar-menu fadeInDown" [ngClass]="{'topbar-menu-visible': app.topbarMenuActive}">
+        <li #profile class="user-profile" *ngIf="app.profileMode==='popup'||app.isHorizontal()"
+            [ngClass]="{'active-topmenuitem':app.activeTopbarItem === profile}">
+
+            <a href="#" (click)="app.onTopbarItemClick($event,profile)">
+                <img alt="babylon-layout" src="assets/layout/images/avatar.png"/>
+            </a>
+
+            <ul class="fadeInDown">
+                <li role="menuitem">
+                    <a href="#" (click)="logout()">
+                        <i class="pi pi-user"></i>
+                        <span>Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

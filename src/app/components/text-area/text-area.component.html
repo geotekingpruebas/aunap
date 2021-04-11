@@ -1,0 +1,33 @@
+<div class="ui-fluid">
+  <div class="card ui-g">
+    <div class="ui-g-12">
+      <h1>Área de texto</h1>
+      <form [formGroup]="textAreaForm" (ngSubmit)="saveChanges()">
+        <div class="ui-g-12">
+          <div class="ui-g-2">
+            <label class="label">Valor actual</label>
+          </div>  
+          <div class="ui-g-4">
+            <textarea pInputTextarea disabled>{{textAreaService.getInformation().value}}</textarea>
+          </div>
+        </div> 
+        <div class="ui-g-12">  
+          <div class="ui-g-2">
+            <label class="label">Nuevo valor</label>
+          </div>  
+          <div class="ui-g-4">
+            <textarea pInputTextarea formControlName="newValue" placeholder="Textarea"></textarea>
+          </div>
+        </div>
+        <div class="ui-g-12">
+          <div class="ui-g-2">
+            <button type="button" pButton icon="pi pi-times" (click)="goSchema()" label="Cancelar"></button>
+          </div>
+          <div class="ui-g-2">
+            <button type="submit" pButton icon="pi pi-check" label="Guardar"></button>
+          </div>  
+        </div>
+      </form>
+    </div>  
+  </div>
+</div>

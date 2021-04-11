@@ -1,0 +1,22 @@
+<div class="ui-fluid">
+  <div class="card ui-g">
+    <div class="ui-g-12">
+      <h1 class="title">Campo tipo fecha</h1>
+      <form  (ngSubmit)="saveChanges()">
+        <div class="ui-g-4">
+          <h3>Icon</h3>
+          <p-calendar [(ngModel)]="inputDateService.getInformation().value" [showIcon]="true" name="date" dataType="string" dateFormat="yy-mm-dd"></p-calendar>
+        </div>
+        <div class="ui-g-12">
+          <div class="ui-g-2">
+            <button type="button" pButton icon="pi pi-times" (click)="goSchema()" label="Cancelar"></button>
+          </div>
+          <div class="ui-g-2">
+            <button type="submit" pButton icon="pi pi-check" label="Guardar"></button>
+          </div>  
+        </div>
+      </form>
+    </div> 
+  </div>      
+</div>
+

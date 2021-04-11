@@ -1,0 +1,68 @@
+<body class="login-body">
+    <div class="login-panel"></div>
+    <div class="login-content">
+        <img src="../../../assets/images/aunap.png" alt="babylon-layout"/>
+        <h1>INGRESAR A AUNAP-TEST</h1>
+        <p>Bienvenido, ingrese sus datos de acceso.</p>
+        <form [formGroup]="loginForm" (ngSubmit)=onSubmit()>
+            <div class="field">
+                <div class="login-input-wrapper">
+                    <input
+                        id="email"                                                                                                     
+                        class="ui-inputtext ui-widget"
+                        type="email"
+                        placeholder="Correo electronico"
+                        formControlName="email"
+                        required>
+                </div>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <p class="help is-danger is-size-6"                                                                                                                                                                     
+                    *ngIf="email.errors.required"                                                                                                                                                               
+                    >Campo obligatorio</p>
+                    <p class="help is-danger is-size-6"                                                                                                                                                                     
+                        *ngIf="email.errors.email"                                                                                                                                                              
+                        >Formato Incorrecto</p>  
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="login-input-wrapper">
+                    <input
+                        class="ui-inputtext ui-widget"                                 
+                        type="password"
+                        placeholder="Contraseña"
+                        formControlName="password"
+                        required>
+                </div>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)">
+                    <p class="help is-danger is-size-6"                                                                                                                                                                     
+                    *ngIf="password.errors.required"                                                                                                                                                               
+                    >Campo obligatorio</p>
+                    <p class="help is-danger is-size-6"                                                                                                                                                                     
+                        *ngIf="password.errors.minlength"                                                                                                                                                              
+                        >Formato Incorrecto</p>  
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">&nbsp;</label>
+                <div class="control">
+                    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"
+                            [disabled]="!loginForm.valid || loading">
+                        <span class="ui-button-text ui-c">Aceptar</span>
+                        <span *ngIf="loading" class="icon is-small fa-pulse">
+                            <fa-icon icon="spinner"></fa-icon>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div *ngIf="errorNot" 
+                [ngClass]="{'is-danger': errorNot}" 
+                class="notification">
+                <button (click)=removeNotification() class="delete"></button>
+                {{messageNot}}                        
+            </div>    
+        </form>
+    </div>
+</body> 
+        

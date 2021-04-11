@@ -1,0 +1,35 @@
+<p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>
+<div class="ui-fluid">
+    <div class="card ui-g">
+        <div class="ui-g-12">
+            <h1>Botones y mensajes</h1>
+            <p>Seleccione los botones Éxito, Informativo, Advertencia y Error para ver ejemplos de mensajes.</p>
+            <div class="ui-g">
+                <div class="ui-g-12">
+                    <div class="ui-g-2">
+                        <button pButton type="button" label="Principal"></button>
+                    </div>
+                    <div class="ui-g-2">
+                        <button pButton type="button" label="Secundario" class="ui-button-secondary"></button>
+                    </div>
+                </div>   
+                <div class="ui-g-12">
+                    <div class="ui-g-2">
+                        <button type="button" pButton (click)="showSuccess()" label="Éxito" class="ui-button-success"></button>
+                    </div>
+                    <div class="ui-g-2">
+                        <button type="button" pButton (click)="showInfo()" label="Informativo" class="ui-button-info"></button>
+                    </div>
+                </div>    
+                <div class="ui-g-12">
+                    <div class="ui-g-2">
+                        <button type="button" pButton (click)="showWarn()" label="Advertencia" class="ui-button-warning"></button>
+                    </div>
+                    <div class="ui-g-2">
+                        <button type="button" pButton (click)="showError()" label="Error" class="ui-button-danger"></button>
+                    </div>
+                </div>    
+            </div>
+        </div>    
+    </div>        
+</div>

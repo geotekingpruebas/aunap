@@ -1,0 +1,19 @@
+<div class="ui-fluid">
+  <div class="card ui-g">
+    <div class="ui-g-12">
+      <h1>Listas dependientes</h1>
+      <form>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <p-dropdown [options]="recordSelect1" [(ngModel)]="selectedRecord" (onChange)="onSelect($event)" name="first"></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g-12">
+            <div class="ui-g-4">
+                <p-dropdown [options]="recordSelect2" name="second"></p-dropdown>
+            </div>
+        </div>
+      </form>
+    </div>  
+  </div>      
+</div>

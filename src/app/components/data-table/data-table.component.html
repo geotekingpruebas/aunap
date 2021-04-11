@@ -1,0 +1,55 @@
+<div class="ui-fluid">
+    <div class="card ui-g">
+        <div class="ui-g-12">
+            <h1>Registros</h1>
+            <p>Registros de ejemplo artefacto demostrativo de software. 
+            <br>Haga clic sobre algún campo para ver un ejemplo del tipo de campo que indica el título de la columna.</p>
+            <p-table [value]="records" [paginator]="true" [rows]="5">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Id</th>
+                        <th>Texto</th>
+                        <th>Área de texto</th>
+                        <th>Chequeo</th>
+                        <th>Lista</th>
+                        <th>Date</th>
+                        <th>Options</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-example>
+                    <tr>
+                        <td>{{example.id}}</td>
+                        <td (click)="editInput(example.id, example.code, 'input-text')">{{example.code}}</td>
+                        <td (click)="editInput(example.id, example.generator, 'text-area')">{{example.generator}}</td>
+                        <td (click)="editInput(example.id, example.value, 'check-box')">{{example.value}}</td>
+                        <td (click)="editInput(example.id, example.field.id, 'select')">{{example.field.name}}</td>
+                        <td (click)="editDate(example.id, example.date)">{{example.date}}</td>
+                        <td class="options">
+                            <p-button label="Eliminar" class="button is-danger is-light" (click)="changeStateModal(true, example.id)"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+            <p-dialog header="Eliminar registro"
+                    [(visible)]="modalActive"
+                    [focusOnShow]="false"
+                    [responsive]="true"
+                    showEffect="fade"
+                    [modal]="true">
+
+                <div class="ui-g ui-fluid" *ngIf="records">
+                    <div class="ui-g-12">
+                    <h2 class="title is-4">¿Está seguro de eliminar el registro?</h2>
+                    </div>
+                </div>
+
+                <p-footer>
+                    <div class="ui-dialog-buttonpane ui-helper-clearfix">
+                        <button type="button" pButton icon="pi pi-times" (click)="changeStateModal(false)" label="Cancelar"></button>
+                        <button type="button" pButton icon="pi pi-check" (click)="deleteRecord()" label="Eliminar"></button>
+                    </div>
+                </p-footer>
+            </p-dialog>
+        </div>
+    </div>
+</div>
